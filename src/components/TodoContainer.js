@@ -4,7 +4,8 @@ import Header from "./Header"
 
 class TodoContainer extends React.Component {
   state = {
-    todos: [{
+    todos: [
+      {
         id: 1,
         title: "Setup development environment",
         completed: true
@@ -21,13 +22,28 @@ class TodoContainer extends React.Component {
       }
     ]
   };
+  handleChange = (id) => {
+    this.setState(prevState => {
+      return {
+        todos: prevState.todos.map(todo => {
+          if (todo.id === id) {
+            return {
+              ...todo,
+              completed: !todo.completed,
+            }
+          }
+          return todo;
+        }),
+      }
+    })
+  };
   render() {
     return (
       <div>
         <Header />
-        <TodosList todos={this.state.todos} />
+        <TodosList todos={this.state.todos} handleChangeProps={this.handleChange} />
       </div>
     );
   }
 }
-export default TodoContainer
+export default TodoContainer;
