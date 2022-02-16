@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from "react"
-import styles from "./TodoItem.module.css"
-import { FaTrash } from "react-icons/fa"
+import React, { useState, useEffect } from 'react';
+import styles from './TodoItem.module.css';
+import { FaTrash } from 'react-icons/fa';
 
-const TodoItem = props => {
+const TodoItem = (props) => {
   const [editing, setEditing] = useState(false)
 
   const handleEditing = () => {
     setEditing(true)
-  }
+  };
 
   const handleUpdatedDone = event => {
     if (event.key === "Enter") {
       setEditing(false)
-    }
-  }
+    };
+  };
 
   const completedStyle = {
     fontStyle: "italic",
     color: "#595959",
     opacity: 0.4,
     textDecoration: "line-through",
-  }
+  };
 
   const { completed, id, title } = props.todo
 
-  let viewMode = {}
-  let editMode = {}
+  let viewMode = {};
+  let editMode = {};
 
   if (editing) {
     viewMode.display = "none"
@@ -34,10 +34,10 @@ const TodoItem = props => {
   }
 
   useEffect(() => {
-  return () => {
-    console.log("Cleaning up...")
-  }
-}, [])
+    return () => {
+      console.log("Cleaning up...");
+    };
+  }, []);
 
   return (
     <li className={styles.item}>
@@ -58,13 +58,13 @@ const TodoItem = props => {
         style={editMode}
         className={styles.textInput}
         value={title}
-        onChange={e => {
+        onChange={(e) => {
           props.setUpdate(e.target.value, id)
         }}
         onKeyDown={handleUpdatedDone}
       />
     </li>
-  )
-}
+  );
+};
 
-export default TodoItem
+export default TodoItem;
