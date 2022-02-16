@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import styles from './TodoItem.module.css';
 
@@ -57,14 +58,14 @@ class ToDoItem extends React.Component {
           style={editMode}
           className={styles.textInput}
           value={title}
-          onChange={e => {
+          onChange={(e) => {
             this.props.setUpdate(e.target.value, id)
           }}
           onKeyDown={this.handleUpdatedDone}
         />
       </li>
     );
-  };
-};
+  }
+}
 
 export default ToDoItem;
