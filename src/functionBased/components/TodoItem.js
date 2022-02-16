@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import styles from './TodoItem.module.css';
 import { FaTrash } from 'react-icons/fa';
